@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -13,17 +13,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SSAP — Simple Event Tickets",
-  description: "Create events, share tickets, and manage attendees. The simplest way to handle event ticketing.",
+  title: "SSAP — Minimalist Event Tickets",
+  description: "Create events, share ticket passes, and manage check-ins with an effortless iPhone experience.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased bg-black`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-black text-white selection:bg-indigo-500 selection:text-white">
+        {children}
+      </body>
     </html>
   );
 }
